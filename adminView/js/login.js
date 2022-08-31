@@ -1,0 +1,38 @@
+
+
+function login() {
+
+    let username = $("#username").val();
+    let password = $("#password").val();
+
+    let appUser = {
+        username: username,
+        password: password
+    }
+
+    $.ajax({
+
+        headers: {
+            //kiểu dữ liệu nhận về
+            // 'Accept': '*/*',
+            // kiểu truyền đi
+            "Content-Type": "application/json",
+        },
+        type: "POST",
+        data: JSON.stringify(appUser),
+        url: "http://localhost:8080/login",
+        //xử lý khi thành công
+        success: function (data) {
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("type",data.type);
+            for (let i=0;i<data.roles.length;i++){
+                if(data.roles[i].authority==="ROLE_ADMIN"){
+                    location.href="../../adminView.html";
+                }
+            }
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    })
+}
