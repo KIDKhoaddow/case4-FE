@@ -35,11 +35,23 @@
 
 </head>
 
-<body class="animsition">
+<body class="animsition" data-animsition-in-class="fade-in"
+      data-animsition-in-duration="100"
+      data-animsition-out-class="fade-out"
+      data-animsition-out-duration="500" id="bodyLogin">
     <div class="page-wrapper">
         <div class="page-content--bge5">
             <div class="container">
                 <div class="login-wrap">
+                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade" id="alertlogin">
+                        <span class="badge badge-pill badge-danger" id="alertHeader"></span>
+                        <span id="alertContent">
+
+                           </span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="location.reload()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
@@ -64,7 +76,7 @@
                                         <a href="#">Forgotten Password?</a>
                                     </label>
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" id="btn_submit" name="btn_submit" type="submit" onclick="login()">sign in</button>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" id="btn_submit" name="btn_submit" onclick="login()">sign in</button>
                                 <div class="social-login-content">
                                     <div class="social-button">
                                         <button class="au-btn au-btn--block au-btn--blue m-b-20" >sign in with facebook</button>

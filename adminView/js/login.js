@@ -1,5 +1,3 @@
-
-
 function login() {
 
     let username = $("#username").val();
@@ -10,29 +8,48 @@ function login() {
         password: password
     }
 
-    $.ajax({
-
-        headers: {
-            //kiểu dữ liệu nhận về
-            // 'Accept': '*/*',
-            // kiểu truyền đi
-            "Content-Type": "application/json",
+    var settings = {
+        "url": "http://localhost:8080/login",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
         },
-        type: "POST",
-        data: JSON.stringify(appUser),
-        url: "http://localhost:8080/login",
-        //xử lý khi thành công
-        success: function (data) {
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("type",data.type);
-            for (let i=0;i<data.roles.length;i++){
-                if(data.roles[i].authority==="ROLE_ADMIN"){
-                    location.href="../../adminView.html";
+        "data": JSON.stringify(appUser),
+        "success":function (response) {
+            localStorage.setItem("userAdmin",JSON.stringify(response))
+            for (let i = 0; i < response.roles.length; i++) {
+                if (response.roles[i].authority === "ROLE_ADMIN") {
+                    localStorage.setItem("token", response.token);
+                    localStorage.setItem("type", response.type);
+                    $('#alertlogin').removeClass('alert-danger');
+                    $('#alertlogin').addClass('alert-primary');
+                    $('#alertHeader').removeClass('alert-danger');
+                    $('#alertHeader').addClass('alert-primary');
+                    $('#alertlogin').removeClass('fade');
+                    $('#alertlogin').addClass('show');
+                    document.getElementById("alertHeader").innerText="Success!"
+                    document.getElementById("alertContent").innerText="Login Success"
+                    document.getElementById("bodyLogin").setAttribute("data-animsition-out-duration","50000")
+                    location.href = "http://localhost:63342/case4-FE/adminView.html";
                 }
             }
+            console.log(response);
         },
-        error: function (err) {
-            console.log(err)
+        "error":function (response){
+            document.getElementById("alertHeader").innerText="Fail!"
+            if(response.status===403||response.status===401){
+                document.getElementById("alertContent").innerText="Your username or password is wrong ,try again please !"
+            }else   {
+                document.getElementById("alertContent").innerText=response.responseText
+            }
+            $('#alertlogin').removeClass('fade');
+            $('#alertlogin').addClass('show');
         }
-    })
+    };
+    $.ajax(settings).done();
+    // $('#alertlogin').removeClass('fade');
+    //
+    // $('#alertlogin').addClass('show');
+    event.preventDefault()
 }

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html >
+<html lang="en">
 
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
+    <meta name="author" content="Khoaddow">
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
@@ -22,7 +22,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Vendor CSS-->
     <link href="adminView/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="adminView/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="adminView/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet"
+          media="all">
     <link href="adminView/vendor/wow/animate.css" rel="stylesheet" media="all">
     <link href="adminView/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
     <link href="adminView/vendor/slick/slick.css" rel="stylesheet" media="all">
@@ -35,9 +36,9 @@
 </head>
 
 <body class="animsition" data-animsition-in-class="fade-in"
-      data-animsition-in-duration="500"
+      data-animsition-in-duration="100"
       data-animsition-out-class="fade-out"
-      data-animsition-out-duration="500" onload="getAllStudent()">
+      data-animsition-out-duration="100" onload="getLists()">
 <div class="page-wrapper">
 
     <!-- MENU SIDEBAR-->
@@ -57,13 +58,13 @@
                     <button class="nav-link" id="v-pills-user-tab" data-bs-toggle="pill" data-bs-target="#v-pills-user"
                             type="button" role="tab" aria-controls="v-pills-user" aria-selected="false">User
                     </button>
-                    <button class="nav-link" id="v-pills-product-tab" data-bs-toggle="pill"
-                            data-bs-target="#v-pills-product" type="button" role="tab" aria-controls="v-pills-product"
-                            aria-selected="false">Product
+                    <button class="nav-link" id="v-pills-blog-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-blog" type="button" role="tab" aria-controls="v-pills-blog"
+                            aria-selected="false">Blog
                     </button>
                     <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
                             data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings"
-                            aria-selected="false">Settings
+                            aria-selected="false">Category
                     </button>
                 </div>
             </nav>
@@ -131,23 +132,23 @@
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
                                     <div class="image">
-                                        <img src="adminView/images/icon/avatar-01.jpg" alt="John Doe"/>
+                                        <img id="avatarAdmin"/>
                                     </div>
                                     <div class="content">
-                                        <a class="js-acc-btn" href="#">john doe</a>
+                                        <a class="js-acc-btn" href="#" id="nameAdmin"></a>
                                     </div>
                                     <div class="account-dropdown js-dropdown">
                                         <div class="info clearfix">
                                             <div class="image">
-                                                <a href="#">
-                                                    <img src="adminView/images/icon/avatar-01.jpg" alt="John Doe"/>
+                                                <a id="linkAvatarAdmin">
+                                                    <img id="avatarAdminDropDown"/>
                                                 </a>
                                             </div>
                                             <div class="content">
                                                 <h5 class="name">
-                                                    <a href="#">john doe</a>
+                                                    <a href="#" id="nameAdminDropDown"></a>
                                                 </h5>
-                                                <span class="email">johndoe@example.com</span>
+                                                <span class="email" id="emailAdmin"></span>
                                             </div>
                                         </div>
                                         <div class="account-dropdown__body">
@@ -161,8 +162,8 @@
                                             </div>
                                         </div>
                                         <div class="account-dropdown__footer">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-power"></i>Logout</a>
+                                            <a href="#" onclick="logOut()">
+                                                <i class="zmdi zmdi-power" ></i>Logout</a>
                                         </div>
                                     </div>
                                 </div>
@@ -179,6 +180,15 @@
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <div class="row">
+                        <div class="sufee-alert alert with-close alert-primary alert-dismissible fixed-top fade" id="alert">
+                            <span class="badge badge-pill badge-primary" id="alertHeader">Success</span>
+                           <span id="alertContent">
+                                You successfully read this important alert.
+                           </span>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="location.reload()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                         <div class="tab-content" id="v-pills-tabContent">
                             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                                  aria-labelledby="v-pills-home-tab">
@@ -191,7 +201,7 @@
                                                         <i class="zmdi zmdi-account-o"></i>
                                                     </div>
                                                     <div class="text">
-                                                        <h2>10368</h2>
+                                                        <h2 id="memberOnline">10368</h2>
                                                         <span>members online</span>
                                                     </div>
                                                 </div>
@@ -206,11 +216,11 @@
                                             <div class="overview__inner">
                                                 <div class="overview-box clearfix">
                                                     <div class="icon">
-                                                        <i class="zmdi zmdi-shopping-cart"></i>
+                                                        <i class="zmdi zmdi-blogger"></i>
                                                     </div>
                                                     <div class="text">
-                                                        <h2>388,688</h2>
-                                                        <span>items solid</span>
+                                                        <h2 id="posts">388,688</h2>
+                                                        <span>posts</span>
                                                     </div>
                                                 </div>
                                                 <div class="overview-chart">
@@ -227,8 +237,8 @@
                                                         <i class="zmdi zmdi-calendar-note"></i>
                                                     </div>
                                                     <div class="text">
-                                                        <h2>1,086</h2>
-                                                        <span>this week</span>
+                                                        <h2 id="postsThisYear">1,086</h2>
+                                                        <span>This week</span>
                                                     </div>
                                                 </div>
                                                 <div class="overview-chart">
@@ -242,11 +252,11 @@
                                             <div class="overview__inner">
                                                 <div class="overview-box clearfix">
                                                     <div class="icon">
-                                                        <i class="zmdi zmdi-money"></i>
+                                                        <i class="zmdi zmdi-account-circle"></i>
                                                     </div>
                                                     <div class="text">
-                                                        <h2>$1,060,386</h2>
-                                                        <span>total earnings</span>
+                                                        <h2 id="numberUser">$1,060,386</h2>
+                                                        <span>Number User</span>
                                                     </div>
                                                 </div>
                                                 <div class="overview-chart">
@@ -258,126 +268,34 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-9">
-                                        <h2 class="title-1 m-b-25">Earnings By Items</h2>
+                                        <h2 class="title-1 m-b-25">Posts with lots of likes</h2>
                                         <div class="table-responsive table--no-card m-b-40">
                                             <table class="table table-borderless table-striped table-earning">
                                                 <thead>
                                                 <tr>
-                                                    <th>date</th>
-                                                    <th>order ID</th>
-                                                    <th>name</th>
-                                                    <th class="text-right">price</th>
-                                                    <th class="text-right">quantity</th>
-                                                    <th class="text-right">total</th>
+                                                    <th>Id</th>
+                                                    <th>Title</th>
+                                                    <th>Category</th>
+                                                    <th>Author</th>
+                                                    <th>Create at</th>
+                                                    <th>Likes</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>2018-09-29 05:57</td>
-                                                    <td>100398</td>
-                                                    <td>iPhone X 64Gb Grey</td>
-                                                    <td class="text-right">$999.00</td>
-                                                    <td class="text-right">1</td>
-                                                    <td class="text-right">$999.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2018-09-28 01:22</td>
-                                                    <td>100397</td>
-                                                    <td>Samsung S8 Black</td>
-                                                    <td class="text-right">$756.00</td>
-                                                    <td class="text-right">1</td>
-                                                    <td class="text-right">$756.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2018-09-27 02:12</td>
-                                                    <td>100396</td>
-                                                    <td>Game Console Controller</td>
-                                                    <td class="text-right">$22.00</td>
-                                                    <td class="text-right">2</td>
-                                                    <td class="text-right">$44.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2018-09-26 23:06</td>
-                                                    <td>100395</td>
-                                                    <td>iPhone X 256Gb Black</td>
-                                                    <td class="text-right">$1199.00</td>
-                                                    <td class="text-right">1</td>
-                                                    <td class="text-right">$1199.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2018-09-25 19:03</td>
-                                                    <td>100393</td>
-                                                    <td>USB 3.0 Cable</td>
-                                                    <td class="text-right">$10.00</td>
-                                                    <td class="text-right">3</td>
-                                                    <td class="text-right">$30.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2018-09-29 05:57</td>
-                                                    <td>100392</td>
-                                                    <td>Smartwatch 4.0 LTE Wifi</td>
-                                                    <td class="text-right">$199.00</td>
-                                                    <td class="text-right">6</td>
-                                                    <td class="text-right">$1494.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2018-09-24 19:10</td>
-                                                    <td>100391</td>
-                                                    <td>Camera C430W 4k</td>
-                                                    <td class="text-right">$699.00</td>
-                                                    <td class="text-right">1</td>
-                                                    <td class="text-right">$699.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2018-09-22 00:43</td>
-                                                    <td>100393</td>
-                                                    <td>USB 3.0 Cable</td>
-                                                    <td class="text-right">$10.00</td>
-                                                    <td class="text-right">3</td>
-                                                    <td class="text-right">$30.00</td>
+                                                <tr id="postsMostLike">
                                                 </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
-                                        <h2 class="title-1 m-b-25">Top countries</h2>
+                                        <h2 class="title-1 m-b-25">Top Ten Author </h2>
                                         <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
-                                            <div class="au-card-inner">
+                                            <div class="au-card-infner">
                                                 <div class="table-responsive">
                                                     <table class="table table-top-countries">
                                                         <tbody>
-                                                        <tr>
-                                                            <td>United States</td>
-                                                            <td class="text-right">$119,366.96</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Australia</td>
-                                                            <td class="text-right">$70,261.65</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>United Kingdom</td>
-                                                            <td class="text-right">$46,399.22</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Turkey</td>
-                                                            <td class="text-right">$35,364.90</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Germany</td>
-                                                            <td class="text-right">$20,366.96</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>France</td>
-                                                            <td class="text-right">$10,366.96</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Australia</td>
-                                                            <td class="text-right">$5,366.96</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Italy</td>
-                                                            <td class="text-right">$1639.32</td>
+                                                        <tr id="topTenAuthor">
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -417,16 +335,34 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="table-responsive table-responsive-data2">
-                                            <table class="table table-data3" id="tableUser">
+                                        <div class="table-responsive table-responsive-data3">
+                                            <table class="table table-borderless table-data3">
+                                                <thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Avatar</th>
+                                                    <th>User Name</th>
+                                                    <th>Role</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Birthday</th>
+                                                    <th>Phone</th>
+                                                    <th>RegisDate</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+
+                                                </tr>
+                                                </thead>
+                                                <tbody id="listUser">
+                                                </tbody>
                                             </table>
                                         </div>
                                         <!-- END DATA TABLE -->
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-product" role="tabpanel"
-                                 aria-labelledby="v-pills-product-tab">
+                            <div class="tab-pane fade" id="v-pills-blog" role="tabpanel"
+                                 aria-labelledby="v-pills-blog-tab">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <!-- DATA TABLE -->
@@ -447,7 +383,8 @@
                                             </div>
                                             <div class="table-data__tool-right">
                                                 <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                                    <i class="zmdi zmdi-plus"></i>add item</button>
+                                                    <i class="zmdi zmdi-plus"></i>add item
+                                                </button>
                                                 <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
                                                     <select class="js-select2" name="type">
                                                         <option selected="selected">Excel</option>
@@ -462,36 +399,19 @@
                                                 <thead>
                                                 <tr>
                                                     <th>STT</th>
-                                                    <th>Name</th>
+                                                    <th>Title</th>
+                                                    <th>Category</th>
+                                                    <th>Author</th>
                                                     <th>Describe</th>
-                                                    <th>Picture</th>
+                                                    <th>Create At</th>
+                                                    <th>Status</th>
                                                     <th></th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody id="listBlog">
                                                 <tr class="tr-shadow">
-                                                    <td>1</td>
-                                                    <td>Coca</td>
-                                                    <td>Đồ uống</td>
-                                                    <td></td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item" data-toggle="tooltip"
-                                                                    data-placement="top" title="Info">
-                                                                <i class="zmdi zmdi-info"></i>
-                                                            </button>
-                                                            <button class="item" data-toggle="tooltip"
-                                                                    data-placement="top" title="Edit">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item" data-toggle="tooltip"
-                                                                    data-placement="top" title="Ban">
-                                                                <i class="fa fa-ban"></i>
-                                                            </button>
-
-                                                        </div>
-                                                    </td>
                                                 </tr>
+                                                <button> </button>
                                                 <tr class="spacer"></tr>
                                                 </tbody>
                                             </table>
@@ -508,8 +428,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="copyright">
-                                <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a
-                                        href="https://colorlib.com">Colorlib</a>.</p>
+                                <p>Copyright © 2022 Team 2  All rights reserved.  <a
+                                        href="https://zalo.me/g/wsbatn890">Team2</a>.</p>
                             </div>
                         </div>
                     </div>
@@ -522,6 +442,130 @@
 
 </div>
 
+<!-- modal infoUser -->
+<div class="modal fade" id="infoUser" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="largeModalLabel">User Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Avatar</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <img class="form-control-file img-120 img-cir"id="ava">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Id </label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static" id="id"></p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Username</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static" id="username"></p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Name</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static" id="name"></p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Email</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static"id="email"></p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Phone</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static" id="phone"></p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Birthday</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static" id="birthday"></p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Register Date</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static" id="registerDate"></p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Last Login</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static"id="lastLogin"></p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Status</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static"id="status"></p>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- end modal infoUser -->
+<div class="modal fade" id="banUser" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="smallmodalLabel">Confirm Ban User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Are you sure to ban this Account
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirmBanUser" data-dismiss="modal" >Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <!-- Jquery JS-->
