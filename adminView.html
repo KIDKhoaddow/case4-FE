@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <!-- Required meta tags-->
@@ -35,7 +35,7 @@
 
 </head>
 
-<body class="animsition" data-animsition-in-class="fade-in"
+<body class="animsition " data-animsition-in-class="fade-in"
       data-animsition-in-duration="100"
       data-animsition-out-class="fade-out"
       data-animsition-out-duration="100" onload="getLists()">
@@ -163,7 +163,7 @@
                                         </div>
                                         <div class="account-dropdown__footer">
                                             <a href="#" onclick="logOut()">
-                                                <i class="zmdi zmdi-power" ></i>Logout</a>
+                                                <i class="zmdi zmdi-power"></i>Logout</a>
                                         </div>
                                     </div>
                                 </div>
@@ -180,12 +180,14 @@
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="sufee-alert alert with-close alert-primary alert-dismissible fixed-top fade" id="alert">
+                        <div class="sufee-alert alert with-close alert-primary alert-dismissible fixed-top fade"
+                             id="alert">
                             <span class="badge badge-pill badge-primary" id="alertHeader">Success</span>
-                           <span id="alertContent">
+                            <span id="alertContent">
                                 You successfully read this important alert.
                            </span>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="location.reload()">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                                    onclick="location.reload()">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -350,14 +352,33 @@
                                                     <th>RegisDate</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
-
                                                 </tr>
                                                 </thead>
                                                 <tbody id="listUser">
                                                 </tbody>
                                             </table>
                                         </div>
+
                                         <!-- END DATA TABLE -->
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-12">
+                                        <div class="pagination-area mt-70">
+                                            <nav aria-label="Page navigation example">
+                                                <ul class="pagination justify-content-center">
+                                                    <li class="page-item disabled">
+                                                        <a class="page-link">Previous</a>
+                                                    </li>
+                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="#">Next</a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -403,16 +424,13 @@
                                                     <th>Category</th>
                                                     <th>Author</th>
                                                     <th>Describe</th>
-                                                    <th>Create At</th>
+                                                    <th>CreateAt</th>
                                                     <th>Status</th>
                                                     <th></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody id="listBlog">
-                                                <tr class="tr-shadow">
-                                                </tr>
-                                                <button> </button>
-                                                <tr class="spacer"></tr>
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -421,14 +439,63 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
-                                 aria-labelledby="v-pills-settings-tab">...
+                                 aria-labelledby="v-pills-settings-tab">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <!-- DATA TABLE -->
+                                        <h3 class="title-5 m-b-35">data table</h3>
+                                        <div class="table-data__tool">
+                                            <div class="table-data__tool-left">
+                                                <div class="rs-select2--light rs-select2--md">
+                                                    <select class="js-select2" name="property">
+                                                        <option selected="selected">All</option>
+                                                        <option value="">Online</option>
+                                                        <option value="">Offline</option>
+                                                    </select>
+                                                    <div class="dropDownSelect2"></div>
+                                                </div>
+                                                <button class="au-btn-filter">
+                                                    <i class="zmdi zmdi-filter-list"></i>filters
+                                                </button>
+                                            </div>
+                                            <div class="table-data__tool-right">
+                                                <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                                    <i class="zmdi zmdi-plus"></i>add item
+                                                </button>
+                                                <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                                                    <select class="js-select2" name="type">
+                                                        <option selected="selected">Excel</option>
+                                                        <option value="">Option 2</option>
+                                                    </select>
+                                                    <div class="dropDownSelect2"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive table-responsive-data2">
+                                            <table class="table table-data3">
+                                                <thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Picture</th>
+                                                    <th>Title</th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="listCategory">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- END DATA TABLE -->
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="copyright">
-                                <p>Copyright © 2022 Team 2  All rights reserved.  <a
+                                <p>Copyright © 2022 Team 2 All rights reserved. <a
                                         href="https://zalo.me/g/wsbatn890">Team2</a>.</p>
                             </div>
                         </div>
@@ -459,7 +526,7 @@
                         <label class=" form-control-label">Avatar</label>
                     </div>
                     <div class="col-12 col-md-9">
-                        <img class="form-control-file img-120 img-cir"id="ava">
+                        <img class="form-control-file img-120 img-cir" id="ava">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -491,7 +558,7 @@
                         <label class=" form-control-label">Email</label>
                     </div>
                     <div class="col-12 col-md-9">
-                        <p class="form-control-static"id="email"></p>
+                        <p class="form-control-static" id="email"></p>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -523,7 +590,7 @@
                         <label class=" form-control-label">Last Login</label>
                     </div>
                     <div class="col-12 col-md-9">
-                        <p class="form-control-static"id="lastLogin"></p>
+                        <p class="form-control-static" id="lastLogin"></p>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -531,7 +598,7 @@
                         <label class=" form-control-label">Status</label>
                     </div>
                     <div class="col-12 col-md-9">
-                        <p class="form-control-static"id="status"></p>
+                        <p class="form-control-static" id="status"></p>
                     </div>
                 </div>
 
@@ -545,7 +612,9 @@
 </div>
 </div>
 <!-- end modal infoUser -->
-<div class="modal fade" id="banUser" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+<!--modal ban active user-->
+<div class="modal fade" id="banAndActiveUser" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -555,17 +624,234 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>
+                <p id="contentModalActionUser">
                     Are you sure to ban this Account
                 </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" id="confirmBanUser" data-dismiss="modal" >Confirm</button>
+                <button type="button" class="btn btn-primary" id="confirmActionUser" data-dismiss="modal">Confirm
+                </button>
             </div>
         </div>
     </div>
 </div>
+<!--end modal ban active user-->
+<!--modal ban active blog-->
+<div class="modal fade" id="banAndActiveBlog" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="smallmodal">Confirm active blog</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="contentModalActionBlog">
+
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirmActionBlog" data-dismiss="modal">Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal ban active blog-->
+<!-- modal info blog -->
+<div class="modal fade" id="infoBlog" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="title">Blog Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Id </label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static" id="idBlog"></p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Picture</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <img class="form-control-file img-120 img-cir" id="picture">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Title</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static" id="titleBlog"></p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Category</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static" id="Category"></p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Author</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static" id="Author"></p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Describe</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static" id="Describe"></p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Content</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static" id="contentBlog"></p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Create At</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static" id="createAtBlog"></p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Last update</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static" id="lastUpdateBlog"></p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Status</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static" id="statusBlog"></p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- end modal info blog -->
+<!--modal review blog-->
+<div class="modal fade" id="reviewBlog" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Confirm admit blog</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="contentModalAdmitBlog">
+
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirmAdmitBlog" data-dismiss="modal">Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal review blog-->
+
+<!-- modal info blog -->
+<div class="modal fade" id="editCategory" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleCategory">Category edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data" class="form-horizontal">
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label class=" form-control-label">Id </label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <p class="form-control-static" id="idCategory"></p>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label class=" form-control-label">Picture</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <img class="form-control-file img-120 img-cir" id="pictureCategory">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label class=" form-control-label" for="name-category-input">Title</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="text" id="name-category-input" name="text-input" placeholder="Text"
+                                   class="form-control">
+                            <small class="form-text text-muted">This is a help text</small>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="file-input" class=" form-control-label">File input</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="file" id="file-input" name="file-input" class="form-control-file">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- end modal info blog -->
+
 <div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <!-- Jquery JS-->
@@ -593,8 +879,9 @@
 
     <!-- Main JS-->
     <script src="adminView/js/main.js"></script>
-    <script src="adminView/js/adminView.js"></script>
+    <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
 
+    <script src="adminView/js/adminView.js"></script>
 
 </div>
 

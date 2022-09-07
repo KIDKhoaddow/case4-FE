@@ -2,20 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c684b076-06c6-4a2f-aaae-017709e8497f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/case4-FE.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commonJS/commonJS.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userView/css/responsive.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userView/js/category-post.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userView/js/category.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userView/js/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userView/js/likeComment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userView/js/loadNavBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userView/js/login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userView/js/single-post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/adminView.html" beforeDir="false" afterPath="$PROJECT_DIR$/adminView.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/adminView/js/adminView.js" beforeDir="false" afterPath="$PROJECT_DIR$/adminView/js/adminView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adminView/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/adminView/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adminView/js/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catagory-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/catagory-post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catagory.html" beforeDir="false" afterPath="$PROJECT_DIR$/catagory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipe.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/single-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/single-post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userView/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/userView/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -33,10 +51,15 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "O:/Course/Java_Code_Gym/Case_Study/case4-BE",
+    "nodejs_package_manager_path": "npm"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="O:\Course\Java_Code_Gym\Case_Study\case4-FE\userView\css" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="O:\Course\Java_Code_Gym\Case_Study\case4-FE\adminView\js" />
       <recent name="O:\Course\Java_Code_Gym\Case_Study\case4-FE" />
@@ -60,7 +83,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1662040476038</updated>
-      <workItem from="1662040477453" duration="30329000" />
+      <workItem from="1662040477453" duration="93402000" />
+      <workItem from="1662511407918" duration="990000" />
     </task>
     <servers />
   </component>

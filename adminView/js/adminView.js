@@ -1,35 +1,36 @@
 let link = "http://localhost:8080"
+let linkAnother = "http://192.168.1.142:8080"
 let linkImg = link + "/Image/"
 let linkUserInfo = link + "/userInfo/"
 
-function getInfoLocalStorage(key) {
-    return JSON.parse(localStorage.getItem(key));
-}
 
 function getLists() {
-    if (localStorage.getItem("userAdmin") == null) {
+    if (localStorage.getItem("user") == null) {
         location.href = "http://localhost:63342/case4-FE/login.html";
     }
     getAllUser()
     getAdminInfo()
     getAllBlog()
-
+    getAllCategory()
 }
 
 function getAdminInfo() {
-    let idAdmin = getInfoLocalStorage("userAdmin").id;
+    let idAdmin = getInfoLocalStorage("user").id;
     let Authorization = getAuthorization();
     let settings = {
-        "url": "http://localhost:8080/userInfo/findByUserId/" + idAdmin,
+        "url": link + "/userInfo/findByUserId/" + idAdmin,
         "method": "GET",
         "headers": {
             "Authorization": Authorization,
             "Content-Type": "application/json",
         },
-        "data": "\r\n",
+        "timeout": "0",
+        "data": "\r",
+        "error": function () {
+            location.href = "http://localhost:63342/case4-FE/login.html";
+        }
     };
     $.ajax(settings).done(function (userInfo) {
-        localStorage.setItem("userInfo", JSON.stringify(userInfo))
         document.getElementById("avatarAdmin").setAttribute("src", linkImg + userInfo.avatar)
         document.getElementById("avatarAdminDropDown").setAttribute("src", linkImg + userInfo.avatar)
         document.getElementById("nameAdmin").innerText = userInfo.user.username
@@ -50,7 +51,7 @@ function getAllUser() {
             "Authorization": Authorization,
             "Content-Type": "application/json",
         },
-        "data": "\r\n",
+        "data": "\r",
     };
     $.ajax(settings).done(function (response) {
         document.getElementById("listUser").innerHTML = displayTableUser(response);
@@ -74,6 +75,7 @@ function displayTableUser(data) {
         result += "<td class=''>" + (i + 1) + "</td>"
         result += "<td><img id='image' srcset='http://localhost:8080/Image/" + data[i].avatar + "' class='img img-40'></td>"
         result += "<td>" + data[i].user.username + "</td>"
+
         if (data[i].user.roles[0].name === "ROLE_ADMIN") {
             result += "<td ><span class='role admin'>Admin</span></td>"
         } else {
@@ -89,9 +91,20 @@ function displayTableUser(data) {
         result += "<button class='item' type='button' data-toggle='modal' data-target='#infoUser' " +
             "data-placement='top' title='Info' onclick='displayModalInfoUser(" + data[i].id + ")'>"
         result += "<i class='zmdi zmdi-info'></i></button>"
-        result += "<button class='item' type='button' data-toggle='modal' data-target='#banUser'" +
-            " data-placement='top' title='Ban' onclick='getUserIdToBan(" + data[i].id + ")'>"
-        result += "<i class='fa fa-ban'></i>"
+        if (data[i].userStatus.verify) {
+            document.getElementById("contentModalActionUser").innerText = " Are you sure to ban this Account"
+
+            result += "<button class='item' type='button' data-toggle='modal' data-target='#banAndActiveUser'" +
+                " data-placement='top' title='Ban' onclick='getUserIdToBan(" + data[i].userStatus.id + ")'>"
+            result += "<i class='fa fa-ban'></i>"
+        } else {
+            document.getElementById("contentModalActionUser").innerText = " Are you sure to active this Account"
+
+            result += "<button class='item' type='button' data-toggle='modal' data-target='#banAndActiveUser'" +
+                " data-placement='top' title='Active' onclick='getUserIdToActive(" + data[i].userStatus.id + ")'>"
+            result += "<i class='fa fa-check'></i>"
+        }
+
         result += "</button></div></td>"
         result += "<tr class='spacer'></tr>"
 
@@ -109,7 +122,7 @@ function displayModalInfoUser(id) {
             "Authorization": Authorization,
             "Content-Type": "application/json",
         },
-        "data": "\r\n",
+        "data": "\r",
     };
     $.ajax(settings).done(function (response) {
         let userInfo = response
@@ -128,13 +141,33 @@ function displayModalInfoUser(id) {
 }
 
 function getUserIdToBan(id) {
-    document.getElementById("confirmBanUser").setAttribute("onclick", "banUser("+id+")");
+    document.getElementById("confirmActionUser").setAttribute("onclick", "banUser(" + id + ")");
+}
+
+function getUserIdToActive(id) {
+    document.getElementById("confirmActionUser").setAttribute("onclick", "activeUser(" + id + ")");
+}
+
+function activeUser(id) {
+    let Authorization = getAuthorization();
+    let settings = {
+        "url": "http://localhost:8080/admin/activeUser/" + id,
+        "method": "GET",
+        "headers": {
+            "Authorization": Authorization
+        },
+    };
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        getAllUser();
+    });
+
 }
 
 function banUser(id) {
     let Authorization = getAuthorization();
     let settings = {
-        "url": "http://localhost:8080/banUser/" + id,
+        "url": "http://localhost:8080/admin/banUser/" + id,
         "method": "GET",
         "headers": {
             "Authorization": Authorization
@@ -158,40 +191,209 @@ function getAllBlog() {
             "Authorization": Authorization,
             "Content-Type": "application/json",
         },
-        "data": "\r\n",
+        "data": "\r",
     };
     $.ajax(settings).done(function (response) {
-        console.log(response);
         document.getElementById("listBlog").innerHTML = displayTableBlog(response);
+        for (let i = 0; i < response.length; i++) {
+            if (!response[i].blogStatus.verify) {
+                let rows = document.getElementById("rowBlog").children
+                for (let j = 0; j < rows.length; j++) {
+                    rows[j].style.background = "#f8d7da"
+                }
+            }
+        }
+        console.log(response);
     });
 }
 
 function displayTableBlog(data) {
     let result = ""
     for (let i = 0; i < data.length; i++) {
-        result += " <tr class='tr-shadow'>"
+        result += " <tr class='tr-shadow' id='rowBlog'>"
         result += "<td>" + (i + 1) + "</td>"
         result += "<td>" + data[i].title + "</td>"
         result += "<td>" + data[i].category.name + "</td>"
         result += "<td>" + data[i].userInfo.user.username + "</td>"
         result += "<td>" + data[i].describes + "</td>"
         result += "<td>" + data[i].createAt + "</td>"
-        result += "<td>" + data[i].blogStatus.status + "</td>"
+
+        if (data[i].blogStatus.status === "PENDING") {
+            result += "<td><h4><span class='badge badge-warning'>" + data[i].blogStatus.status + "</span></h4></td>"
+        } else if (data[i].blogStatus.status === "PUBLIC") {
+            result += "<td><h4><span class='badge badge-primary'>" + data[i].blogStatus.status + "</span></h4></td>"
+        } else {
+            result += "<td><h4><span class='badge badge-danger'>" + data[i].blogStatus.status + "</span></h4></td>"
+        }
+
+
         result += "<td><div class='table-data-feature'>"
-        result += "<button class='item' data-toggle='tooltip' data-placement='top' title='Info'>"
+        result += "<button class='item' type='button' data-toggle='modal' data-target='#infoBlog' " +
+            "data-placement='top' title='Info' onclick='displayModalInfoBlog(" + data[i].id + ")'>"
         result += "<i class='zmdi zmdi-info'></i></button>"
-        result += "<button class='item' data-toggle='tooltip' data-placement='top' title='Edit'>"
-        result += "<i class='fa fa-edit'></i></button>"
-        result += "<button class='item' data-toggle='tooltip' data-placement='top' title='Ban'>"
-        result += "<i class='fa fa-ban'></i></button>"
-        result += "</div></td>"
+
+
+        if (data[i].blogStatus.status === "PENDING") {
+            document.getElementById("contentModalActionBlog").innerText = " Are you sure to admit this Post";
+            result += "<button class='item' data-toggle='modal' data-placement='top'  data-target='#reviewBlog' " +
+                "title='Review' onclick='getBlogPublic(" + data[i].id + ")'>"
+            result += "<i class='fa fa-thumbs-up'></i></button>"
+        }
+
+        if (data[i].blogStatus.verify) {
+            document.getElementById("contentModalActionBlog").innerText = " Are you sure to ban this Post";
+            result += "<button class='item' type='button' data-toggle='modal' data-target='#banAndActiveBlog'" +
+                " data-placement='top' title='Ban' onclick='getBlogIdToBan(" + data[i].blogStatus.id + ")'>"
+            result += "<i class='fa fa-ban'></i></button>"
+        } else {
+            document.getElementById("contentModalActionBlog").innerText = " Are you sure to active this Post";
+            result += "<button class='item' type='button' data-toggle='modal' data-target='#banAndActiveBlog'" +
+                " data-placement='top' title='Active' onclick='getBlogIdToActive(" + data[i].blogStatus.id + ")'>"
+            result += "<i class='fa fa-check'></i></button>"
+        }
+        result += "</div></td></tr>"
         result += "<tr class='spacer'></tr>"
     }
     return result;
 }
 
+function displayModalInfoBlog(id) {
+    let Authorization = getAuthorization();
+    var settings = {
+        "url": "http://localhost:8080/userView/blog/" + id,
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Authorization": Authorization
+        },
+    };
+
+    $.ajax(settings).done(function (response) {
+        document.getElementById("idBlog").innerText = response.id
+        document.getElementById("picture").setAttribute("src", linkImg + response.picture)
+        document.getElementById("titleBlog").innerText = response.title
+        document.getElementById("Category").innerText = response.category.name
+        document.getElementById("Author").innerText = response.userInfo.name
+        document.getElementById("Describe").innerText = response.describe
+        document.getElementById("contentBlog").innerText = response.content
+        document.getElementById("createAtBlog").innerText = response.createAt
+        document.getElementById("lastUpdateBlog").innerText = response.blogStatus.updateAt
+        document.getElementById("statusBlog").innerText = response.blogStatus.status
+        console.log(response);
+    });
+}
+
+function getBlogPublic(id) {
+    document.getElementById("confirmAdmitBlog").setAttribute("onclick", "admitBlog(" + id + ")");
+}
+
+function admitBlog(id) {
+    var settings = {
+        "url": "http://localhost:8080/admin/publicBlog/" + id,
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Authorization": getAuthorization()
+        },
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        getAllBlog()
+    });
+}
+
+function getBlogIdToBan(id) {
+    document.getElementById("confirmActionBlog").setAttribute("onclick", "banBlog(" + id + ")");
+}
+
+function getBlogIdToActive(id) {
+    document.getElementById("confirmActionBlog").setAttribute("onclick", "activeBlog(" + id + ")");
+}
+
+function activeBlog(id) {
+    let Authorization = getAuthorization();
+    let settings = {
+        "url": "http://localhost:8080/admin/activeBlog/" + id,
+        "method": "GET",
+        "headers": {
+            "Authorization": Authorization
+        },
+    };
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        getAllBlog()
+    });
+
+}
+
+function banBlog(id) {
+    let Authorization = getAuthorization();
+    let settings = {
+        "url": "http://localhost:8080/admin/banBlog/" + id,
+        "method": "GET",
+        "headers": {
+            "Authorization": Authorization
+        },
+    };
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        getAllBlog()
+    });
+
+}
+
+function getAllCategory() {
+    var settings = {
+        "url": "http://localhost:8080/userView/listCategory",
+        "method": "GET",
+        "timeout": 0,
+    };
+    $.ajax(settings).done(function (response) {
+        document.getElementById("listCategory").innerHTML = displayTableCategory(response)
+        console.log(response);
+    });
+}
+
+function displayTableCategory(response) {
+    let result = ""
+    for (let i = 0; i < response.length; i++) {
+        result += " <tr class='tr-shadow'>" +
+            "        <td>" + (i + 1) + "</td>" +
+            "        <td><img id='image' srcset='http://localhost:8080/Image/" + response[i].picture + "' class='img img-120'></td>" +
+            "        <td>" + response[i].name + "</td>" +
+            "           <td> <div class='table-data-feature'>" +
+            "                <button class='item' data-toggle='modal' data-placement='top' data-target='#editCategory'" +
+            "             title='Edit' type='button' style='background: green;' onclick='displayModalEditCategory("+response[i].id+")'>" +
+            "                        <i class='fas fa-edit' style='color: white'></i>" +
+            "                </button>" +
+            "            </div>" +
+            "        </td>" +
+            "    </tr>"
+        result += "<tr class='spacer'></tr>"
+    }
+    return result
+}
+
+function displayModalEditCategory(id){
+    var settings = {
+        "url": "http://localhost:8080/userView/category/"+id,
+        "method": "GET",
+        "timeout": 0,
+    };
+
+    $.ajax(settings).done(function (response) {
+        document.getElementById("idCategory").innerText=response.id
+        document.getElementById("pictureCategory").setAttribute("src","http://localhost:8080/Image/"+response.picture)
+        document.getElementById("name-category-input").value=response.name
+        console.log(response);
+    });
+}
+
+
+
 function logOut() {
-    let userAdmin = getInfoLocalStorage("userAdmin")
+    let userAdmin = getInfoLocalStorage("user")
     var settings = {
         "url": "http://localhost:8080/logout/" + userAdmin.id,
         "method": "GET",
@@ -201,11 +403,14 @@ function logOut() {
     $.ajax(settings).done(function (response) {
         console.log(response);
     });
-    localStorage.removeItem("userInfo");
-    localStorage.removeItem("userAdmin");
+    localStorage.removeItem("user");
     localStorage.removeItem("type");
     localStorage.removeItem("token");
     location.href = "http://localhost:63342/case4-FE/login.html";
+}
+
+function getInfoLocalStorage(key) {
+    return JSON.parse(localStorage.getItem(key));
 }
 
 function getAuthorization() {
