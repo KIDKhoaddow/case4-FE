@@ -1653,6 +1653,100 @@ h3 {
       .map-area iframe {
         height: 300px; } }
 
+.post-thumb img {
+  border-radius: 30px;
+  margin-bottom: 30px;
+}
+
+.post-meta {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.post-author a,
+.post-date a,
+.post-favourite a,
+.post-comments a,
+.post-share a {
+  color: #b5aec4;
+  font-size: 14px;
+}
+
+.post-author a:hover,
+.post-date a:hover,
+.post-favourite a:hover,
+.post-comments a:hover,
+.post-share a:hover {
+  color: #000;
+}
+
+.post-favourite a,
+.post-comments a {
+  margin-right: 15px;
+}
+
+.post-author a {
+  margin-right: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.post-author a:after {
+  width: 2px;
+  height: 50%;
+  content: '';
+  position: absolute;
+  top: 20%;
+  right: -14px;
+  z-index: 2;
+  background-color: #b5aec4;
+}
+.single-post {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.single-post h2,
+.single-post h4 {
+  margin: 10px 0;
+  color: #232d37;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  text-transform: capitalize;
+}
+
+.single-post h2:hover,
+.single-post h4:hover {
+  color: #fc6c3f;
+}
+
+.single-post p {
+  color: #51545f;
+}
+
+.single-post .read-more {
+  font-size: 12px;
+  color: #b5aeba;
+  display: inline-block;
+  border: 1px solid #ebebeb;
+  border-radius: 30px;
+  height: 40px;
+  min-width: 170px;
+  line-height: 40px;
+  text-align: center;
+}
+
+
+.single-post .read-more:hover {
+  color: #000;
+  border: 1px solid #000;
+}
+
 /* ====== The End ====== */
 
 /*# sourceMappingURL=style.css.map */

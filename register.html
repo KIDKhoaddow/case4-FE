@@ -33,6 +33,8 @@
     <!-- Main CSS-->
     <link href="adminView/css/theme.css" rel="stylesheet" media="all">
 
+
+
 </head>
 
 <body class="animsition">
@@ -40,6 +42,15 @@
         <div class="page-content--bge5">
             <div class="container">
                 <div class="login-wrap">
+                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade" id="alertlogin">
+                        <span class="badge badge-pill badge-danger" id="alertHeader"></span>
+                        <span id="alertContent">
+
+                           </span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
@@ -50,22 +61,22 @@
                             <form action="" method="post">
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
+                                    <input class="au-input au-input--full" type="text" name="username" id="register-username" placeholder="Username">
                                 </div>
                                 <div class="form-group">
                                     <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                                    <input class="au-input au-input--full" type="password" name="password" id="register-password" placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                    <label>re-Password</label>
+                                    <input class="au-input au-input--full" type="password" name="re-password" id="re-register-password" placeholder="Password">
                                 </div>
                                 <div class="login-checkbox">
                                     <label>
                                         <input type="checkbox" name="aggree">Agree the terms and policy
                                     </label>
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" onclick="registerUserView()">register</button>
                                 <div class="social-login-content">
                                     <div class="social-button">
                                         <button class="au-btn au-btn--block au-btn--blue m-b-20">register with facebook</button>
@@ -110,7 +121,8 @@
 
     <!-- Main JS-->
     <script src="adminView/js/main.js"></script>
-
+    <script src="commonJS/commonJS.js"></script>
+    <script src="userView/js/loadNavBar.js"></script>
 </body>
 
 </html>

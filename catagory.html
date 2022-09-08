@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
     <!-- Title -->
     <title>Category</title>
-
     <!-- Favicon -->
     <link rel="icon" href="userView/img/core-img/favicon.ico">
-
     <!-- Stylesheet -->
     <link rel="stylesheet" href="userView/style.css">
-
-
-
+    <link rel="stylesheet" href="adminView/css/theme.css">
+    <script src="commonJS/commonJS.js"></script>
 </head>
 
 <body onload="loadListCategory()">
@@ -86,6 +80,15 @@
     <!-- Logo Area -->
     <div class="logo-area">
         <a href="index.html"><img src="userView/img/core-img/logo.png" alt=""></a>
+        <div class="sufee-alert alert with-close alert-danger alert-dismissible fade" id="alertlogin">
+            <span class="badge badge-pill badge-danger" id="alertHeader"></span>
+            <span id="alertContent">
+
+                           </span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="location.reload()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     </div>
 
     <!-- Navbar Area -->
@@ -97,20 +100,13 @@
 
                     <!-- Toggler -->
                     <div id="toggler"><img src="userView/img/core-img/toggler.png" alt=""></div>
-
                     <!-- Navbar Toggler -->
-                    <div class="classy-navbar-toggler">
-                        <span class="navbarToggler"><span></span><span></span><span></span></span>
-                    </div>
-
                     <!-- Menu -->
-                    <div class="classy-menu">
-
+                    <div class="classy-menu justify-content-between">
                         <!-- Close Button -->
                         <div class="classycloseIcon">
                             <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                         </div>
-
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
@@ -123,13 +119,13 @@
                                 <li><a href="single-post.html">Blog</a></li>
                                 <li><a href="contact.html">Contact</a></li>
                             </ul>
-                            <!-- Login/Register -->
-                            <div class="login-area">
-                                <a href="#" onclick="showModalLoginRegister()">Login / Register</a>
-                            </div>
                         </div>
                         <!-- Nav End -->
-
+                    </div>
+                    <!-- Login/Register -->
+                    <div class="login-area" id="login-area">
+                        <a href="" class="btn btn-default btn-rounded my-3" data-toggle="modal"
+                           data-target="#" onclick="showModalLoginRegister()">Login/Register</a>
                     </div>
                 </nav>
             </div>

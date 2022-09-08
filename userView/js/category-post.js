@@ -20,7 +20,7 @@ function showListBlogByCategory(response) {
         result += " <!-- Single Blog Post -->" +
             "                    <div class='single-blog-post style-1 d-flex flex-wrap mb-30'>" +
             "                        <!-- Blog Thumbnail -->" +
-            "                        <div class='blog-thumbnail'>" +
+            "                        <div class='blog-thumbnail' style='margin-bottom: 100px'>" +
             "                            <img src='http://localhost:8080/Image/"+response[i].picture+"' alt=''>" +
             "                        </div>" +
             "                        <!-- Blog Content -->" +

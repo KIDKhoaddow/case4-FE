@@ -1,7 +1,7 @@
 
 function openLoginForm(){
-    document.getElementById("buttonSubmit").setAttribute("onclick","login()")
+    document.getElementById("buttonSubmit").setAttribute("onclick","loginUserView()")
 }
 function openRegisterForm(){
-    document.getElementById("buttonSubmit").setAttribute("onclick","register()")
+    document.getElementById("buttonSubmit").setAttribute("onclick","registerUserView()")
 }

@@ -1,12 +1,11 @@
 let link = "http://localhost:8080"
 let linkAnother = "http://192.168.1.142:8080"
-
+let linkImg = link + "/Image/"
+let linkUserInfo = link + "/userInfo/"
 
 function login() {
-
     let username = $("#username").val();
     let password = $("#password").val();
-
     let appUser = {
         username: username,
         password: password
@@ -98,7 +97,6 @@ function saveBlogId(id) {
     localStorage.setItem("blogId", id)
 }
 
-
 function getInfoLocalStorage(key) {
     return JSON.parse(localStorage.getItem(key));
 }
@@ -106,4 +104,8 @@ function getAuthorization() {
     let token = localStorage.getItem("token");
     let type = localStorage.getItem("type");
     return type + " " + token;
+}
+
+function goToLoginPage(){
+    location.href="http://localhost:63342/case4-FE/login.html"
 }

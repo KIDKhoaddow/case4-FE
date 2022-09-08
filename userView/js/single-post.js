@@ -8,12 +8,13 @@ function LoadBlog() {
     };
 
     $.ajax(settings).done(function (response) {
-        let idUser=getInfoLocalStorage("user").id
+        let idUser=response.userInfo.id
         document.getElementById("blogDetail").innerHTML = showBlog(response,idUser);
         document.getElementById("avatar").setAttribute("src", "http://localhost:8080/Image/" + response.userInfo.avatar);
         document.getElementById("author").innerText = response.userInfo.name;
         showLike(response.id,idUser)
         console.log(response);
+
     });
 
 }
@@ -34,8 +35,8 @@ function showBlog(response,idUser) {
         "                        <!-- Post Comment & Share Area -->" +
         "                        <div class='post-comment-share-area d-flex justify-content-end '>" +
         "                            <!-- Post Favourite -->" +
-        "                            <div class='post-favourite' id='iconLike'>" +
-        "                                <a href=''><i class='fa fa-heart-o' aria-hidden='true' onclick='likeBlog("+idUser+","+response.id+")'></i><span id='likeBlog'></span></a>" +
+        "                            <div class='post-favourite' id='iconLike"+response.id+"'>" +
+        "                                <a href=''><i class='fa fa-heart-o' aria-hidden='true' onclick='likeBlog("+idUser+","+response.id+")'></i><span id='likeBlog"+response.id+"'></span></a>" +
         "                            </div>" +
         "                            <!-- Post Comments -->" +
         "                            <div class='post-comments'>" +
@@ -47,27 +48,4 @@ function showBlog(response,idUser) {
         "                            </div>" +
         "                        </div>"
     return result;
-}
-function showLike(id,idUser){
-    var settings = {
-        "url": "http://localhost:8080/userView/countLike/"+id,
-        "method": "GET",
-        "timeout": 0,
-    };
-    $.ajax(settings).done(function (response) {
-        for(let i=0;i<response.length;i++){
-            if(idUser === response[i].userInfo.id){
-                // $("iconLike").removeClass("fa-heart-o").addClass("fa-heart");
-                document.getElementById("iconLike").innerHTML= "<a href=''><i class='fa fa-heart' aria-hidden='true' onclick='unlikeBlog("+idUser+","+response[i].blog.id+")'></i><span id='likeBlog'></span></a>"
-                break;
-
-            }
-        }
-        if(response.length===0){
-            document.getElementById("likeBlog").innerText=" "+0;
-        }else {
-            document.getElementById("likeBlog").innerText=" "+response.length;
-        }
-        console.log(response);
-    });
 }

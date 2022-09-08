@@ -390,11 +390,9 @@ function displayModalEditCategory(id){
     });
 }
 
-
-
 function logOut() {
     let userAdmin = getInfoLocalStorage("user")
-    var settings = {
+    let settings = {
         "url": "http://localhost:8080/logout/" + userAdmin.id,
         "method": "GET",
         "timeout": 0,
