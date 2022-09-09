@@ -296,7 +296,6 @@ function displayTable(data){
         result += "<div class='post-meta'><a href='#' class='post-date'>" + data[i].createAt + "</a>"
         result += "<a href='#' class='post-author'>By" + data[i].userInfo.name+"</a></div></div></div>"
     }
-result+="</div>";
     return result;
 }
 function showSingleBlog(idBlog) {

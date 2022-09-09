@@ -5,8 +5,12 @@ let linkUserInfo = link + "/userInfo/"
 
 
 function getLists() {
+
     if (localStorage.getItem("user") == null) {
         location.href = "http://localhost:63342/case4-FE/login.html";
+    }
+    if(localStorage.getItem("user").roles[0].authority==="ROLE_USER"){
+        location.href = "http://localhost:63342/case4-FE/index.html";
     }
     getAllUser()
     getAdminInfo()

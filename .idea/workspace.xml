@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c684b076-06c6-4a2f-aaae-017709e8497f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/userView/js/proflie.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adminView.html" beforeDir="false" afterPath="$PROJECT_DIR$/adminView.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/adminView/js/adminView.js" beforeDir="false" afterPath="$PROJECT_DIR$/adminView/js/adminView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catagory-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/catagory-post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catagory.html" beforeDir="false" afterPath="$PROJECT_DIR$/catagory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonJS/commonJS.js" beforeDir="false" afterPath="$PROJECT_DIR$/commonJS/commonJS.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/single-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/single-post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userView/js/category-post.js" beforeDir="false" afterPath="$PROJECT_DIR$/userView/js/category-post.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/userView/js/likeComment.js" beforeDir="false" afterPath="$PROJECT_DIR$/userView/js/likeComment.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/userView/js/loadNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/userView/js/loadNavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userView/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/userView/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userView/js/proflie.js" beforeDir="false" afterPath="$PROJECT_DIR$/userView/js/proflie.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/userView/js/single-post.js" beforeDir="false" afterPath="$PROJECT_DIR$/userView/js/single-post.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/userView/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/userView/style.css" afterDir="false" />
     </list>
@@ -43,16 +36,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "O:/Course/Java_Code_Gym/Case_Study/case4-FE",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;O:/Course/Java_Code_Gym/Case_Study/case4-FE&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="O:\Course\Java_Code_Gym\Case_Study\case4-FE" />
@@ -82,7 +75,8 @@
       <option name="presentableId" value="Default" />
       <updated>1662040476038</updated>
       <workItem from="1662040477453" duration="93402000" />
-      <workItem from="1662511407918" duration="61853000" />
+      <workItem from="1662511407918" duration="82475000" />
+      <workItem from="1662690536397" duration="642000" />
     </task>
     <servers />
   </component>

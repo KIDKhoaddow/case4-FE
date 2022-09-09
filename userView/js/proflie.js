@@ -19,11 +19,11 @@ function loadProfilePage() {
         document.getElementById("listPostByAuthor").innerHTML = showListBlogByAuthor(response, userId);
         for (let i = 0; i < response.length; i++) {
             showLike(response[i].id, userId)
+            showComment(response[i].id)
         }
         // localStorage.removeItem("nameCategory")
     });
 }
-
 function showListBlogByAuthor(response, userId) {
     let result = ""
     for (let i = 0; i < response.length; i++) {
@@ -32,7 +32,7 @@ function showListBlogByAuthor(response, userId) {
             "    <div class='single-post wow fadeInUp' data-wow-delay='0.5s'>" +
             "        <!-- Post Thumb -->" +
             "        <div class='post-thumb' onclick='showSingleBlog(" + response[i].id + ")'>" +
-            "            <img src='http://localhost:8080/Image/" + response[i].picture + "' alt=''>" +
+            "            <img style='width: 280px ; height: 280px;' src='http://localhost:8080/Image/" + response[i].picture + "' alt=''>" +
             "        </div>" +
             "        <!-- Post Content -->" +
             "        <div class='post-content'>" +
@@ -55,7 +55,7 @@ function showListBlogByAuthor(response, userId) {
             "                    </div>" +
             "                    <!-- Post Comments -->" +
             "                    <div class='post-comments'>" +
-            "                        <a href='#'><i class='fa fa-comment-o' aria-hidden='true'></i> </a>" +
+            "                        <a href='#'><i class='fa fa-comment-o' aria-hidden='true' onclick='showSingleBlog(" + response[i].id + ")'></i><span id='commentBlog" + response[i].id + "'></span></a>" +
             "                    </div>" +
             "                    <!-- Post Share -->"
         if (response[i].blogStatus.status === "PUBLIC") {
@@ -137,7 +137,7 @@ function updateBlog(idBlog) {
     let title = document.getElementById("title-input").value;
     let describe = document.getElementById("describe-input").value;
     let content = document.getElementById("content-input").value;
-    let categoryId = document.getElementById("category").value;
+    let categoryId = document.getElementById("category-input-select").value;
     let blog = {
         id: idBlog,
         title: title,
@@ -176,6 +176,8 @@ function updateBlog(idBlog) {
 
     })
     loadProfilePage();
+    event.preventDefault()
+
 }
 
 function deleteBlog(idBlog) {

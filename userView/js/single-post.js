@@ -8,14 +8,24 @@ function LoadBlog() {
     };
 
     $.ajax(settings).done(function (response) {
-        let idUser=response.userInfo.id
+        let idUser=null
+        try{
+            idUser=getInfoLocalStorage("user").id
+        }catch (err){
+            console.log(err)
+        }
+        document.getElementById("avatar1").setAttribute("src", linkImg + response.userInfo.avatar)
+        document.getElementById("authorSide").innerText = response.userInfo.name
         document.getElementById("blogDetail").innerHTML = showBlog(response,idUser);
-        document.getElementById("avatar").setAttribute("src", "http://localhost:8080/Image/" + response.userInfo.avatar);
-        document.getElementById("author").innerText = response.userInfo.name;
         showLike(response.id,idUser)
+        showComment(response.id)
         console.log(response);
-
+        showCommentBlog(response.id)
     });
+    let user=getInfoLocalStorage("user")
+    if(user==null){
+        document.getElementById("replyArea").style.display="hidden"
+    }
 
 }
 
@@ -39,8 +49,8 @@ function showBlog(response,idUser) {
         "                                <a href=''><i class='fa fa-heart-o' aria-hidden='true' onclick='likeBlog("+idUser+","+response.id+")'></i><span id='likeBlog"+response.id+"'></span></a>" +
         "                            </div>" +
         "                            <!-- Post Comments -->" +
-        "                            <div class='post-comments'>" +
-        "                                <a href='#'><i class='fa fa-comment-o' aria-hidden='true'></i> 12</a>" +
+        "                            <div class='post-comments' id='iconComment'>" +
+        "                                <a href='#'><i class='fa fa-comment-o' aria-hidden='true' ></i><span id='commentBlog"+response.id+"'></span></a>" +
         "                            </div>" +
         "                            <!-- Post Share -->" +
         "                            <div class='post-share'>" +
